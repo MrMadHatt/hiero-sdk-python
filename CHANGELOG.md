@@ -6,8 +6,9 @@ This changelog is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.
 
 ## [Unreleased]
 
-
 ### Tests
+- Standardize formatting of `tests/unit/entity_id_helper_test.py` using Black for consistent code style across the test suite (#1527)
+
 - Added tests for ProtoBuf Training Example Implementation
 - Formatted `tests/unit/get_receipt_query_test.py` with black for code style consistency. (#1537)
 - format black `tests/unit/hbar*.py`.(#1538)
@@ -31,6 +32,8 @@ This changelog is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.
 - Format `tests/unit/custom_fee_test.py` with black for code style consistency. (#1525)
 
 ### Added
+- Added logging in bot-gfi-assign-on-comment.js to prevent silent skips. (`#1668`)
+- Added `AssessedCustomFee` domain model to represent assessed custom fees. (`#1637`)
 - Add __repr__ method for ContractId class to improve debugging (#1714)
 - Added Protobuf Training guide to enhance developer understanding of proto serialization
   and deserialization (#1645)
@@ -140,16 +143,17 @@ This changelog is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.
 - Added first-class support for EVM address aliases in `AccountId`, including parsing, serialization, Mirror Node population helpers.
 - Add automated bot to recommend next issues to contributors after their first PR merge (#1380)
 - Added dry-run support and refactored `.github/workflows/bot-workflows.yml` to use dedicated script `.github/scripts/bot-workflows.js` for improved maintainability and testability. (`#1288`)
+- Added MirrorNode based population for `ContractId`, including parsing and serialization support.
 - Added `/working` command to reset the inactivity timer on issues and PRs. ([#1552](https://github.com/hiero-ledger/hiero-sdk-python/issues/1552))
 - Added `grpc_deadline` support for transaction and query execution.
-
-### Changed
+- Type hints to exception classes (`PrecheckError`, `MaxAttemptsError`, `ReceiptStatusError`) constructors and string methods.
 
 ### Documentation
 - Added comprehensive docstring to `compress_with_cryptography` function (#1626)
 - Replaced the docstring in `entity_id_helper.py` with one that is correct. (#1623)
 
 ### Changed
+- Refactored `setup_client()` in all `examples/query/` files to use `Client.from_env()` for simplified client initialization (#1449)
 - Updated return of to_bytes function in `src/hiero_sdk_python/transaction/transaction.py`. (#1631)
 - Added missing return type `src/hiero_sdk_python/utils/entity_id_helper.py`. (#1622)
 - Update `verify_freeze()` to treat only ACCOUNT_FROZEN_FOR_TOKEN as a successful freeze verification (#1515)
@@ -249,6 +253,7 @@ This changelog is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.
 - chore: update MAINTAINERS.md to include new maintainer Manish Dait and sort maintainers by GitHub ID. (#1691)
 
 ### Fixed
+- Updated Good First Issue recommendations to supported Hiero repositories. (#1689)
 - Fix the next-issue recommendation bot to post the correct issue recommendation comment. (#1593)
 - Ensured that the GFI assignment bot skips posting `/assign` reminders for repository collaborators to avoid unnecessary notifications.(#1568).
 - Reduced notification spam by skipping the entire advanced qualification job for non-advanced issues and irrelevant events (#1517)
